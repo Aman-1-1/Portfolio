@@ -11,7 +11,16 @@ export function getSupabase(): SupabaseClient | null {
     return null;
   }
   try {
-    clientInstance = createClient(supabaseUrl, supabaseAnonKey);
+    clientInstance = createClient(supabaseUrl, supabaseAnonKey, {
+      global: {
+        fetch: (url, options = {}) => {
+          return fetch(url, {
+            ...options,
+            cache: 'no-store',
+          });
+        },
+      },
+    });
     return clientInstance;
   } catch (err) {
     console.error('[Supabase Init Error]:', err);

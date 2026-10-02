@@ -5,8 +5,9 @@ import { PortfolioDataProvider } from '@/lib/portfolio-context';
 import { getPortfolioData } from '@/lib/portfolio-data';
 import GBADevice from '@/components/gba/GBADevice';
 
-// Revalidate every 60 seconds so edits from the admin panel appear promptly
-export const revalidate = 60;
+// Force dynamic rendering on every request so changes in Supabase appear immediately
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function Home() {
   const portfolioData = await getPortfolioData();
