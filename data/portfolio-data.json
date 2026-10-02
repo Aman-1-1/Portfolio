@@ -1,0 +1,260 @@
+{
+  "profile": {
+    "name": "Aman Regmi",
+    "tagline": "Digital Adventure",
+    "class": "Full Stack Developer",
+    "level": 21,
+    "location": "Chitwan, Bharatpur, Nepal",
+    "bio": "A passionate Full Stack Developer crafting meaningful digital experiences. I love building things that live on the internet and solving real-world problems with clean, efficient code.",
+    "avatar": "pixel",
+    "status": "Available for opportunities",
+    "character": {
+      "enabled": true,
+      "neutralSprite": "/art/neutral.jpg",
+      "happySprite": "/art/happy.png",
+      "animationEnabled": true,
+      "frameDuration": 1000
+    }
+  },
+  "skills": [
+    { "id": "js", "name": "JavaScript", "level": 90, "category": "frontend" },
+    { "id": "ts", "name": "TypeScript", "level": 80, "category": "frontend" },
+    { "id": "react", "name": "React", "level": 85, "category": "frontend" },
+    { "id": "nextjs", "name": "Next.js", "level": 82, "category": "frontend" },
+    { "id": "html", "name": "HTML / CSS", "level": 92, "category": "frontend" },
+    { "id": "java", "name": "Java", "level": 80, "category": "backend" },
+    { "id": "spring", "name": "Spring Boot", "level": 75, "category": "backend" },
+    { "id": "nodejs", "name": "Node.js", "level": 78, "category": "backend" },
+    { "id": "express", "name": "Express.js", "level": 76, "category": "backend" },
+    { "id": "postgres", "name": "PostgreSQL", "level": 80, "category": "database" },
+    { "id": "mysql", "name": "MySQL", "level": 72, "category": "database" },
+    { "id": "mongodb", "name": "MongoDB", "level": 68, "category": "database" },
+    { "id": "git", "name": "Git", "level": 88, "category": "tools" },
+    { "id": "docker", "name": "Docker", "level": 65, "category": "tools" },
+    { "id": "figma", "name": "Figma", "level": 70, "category": "tools" },
+    { "id": "tailwind", "name": "Tailwind CSS", "level": 85, "category": "frontend" }
+  ],
+  "projects": [
+    {
+      "id": "bharatpurwithme",
+      "title": "BharatpurWithMe",
+      "type": "Web Application",
+      "stack": ["Next.js", "Node.js", "PostgreSQL", "Tailwind CSS"],
+      "shortDescription": "A community platform connecting people in Bharatpur.",
+      "description": "BharatpurWithMe is a full-featured community platform designed to connect residents, tourists, and businesses in Bharatpur, Nepal. It provides local event listings, business directories, and community forums.",
+      "problem": "People in Bharatpur had no centralized digital platform to discover local events, find businesses, or connect with their community. Information was scattered across social media and word-of-mouth.",
+      "solution": "Built a centralized web platform with user authentication, event listings, business directory, and a community forum — all tailored to the Bharatpur context.",
+      "features": [
+        "User authentication & profiles",
+        "Local event listings & RSVP",
+        "Business directory with search",
+        "Community forum with categories",
+        "Admin moderation panel",
+        "Mobile-responsive design"
+      ],
+      "contribution": "I designed and developed the entire full-stack application — from database schema design, REST API development in Node.js, to the Next.js frontend and deployment.",
+      "challenges": "Designing a system that remains useful for both tech-savvy and non-tech users in a local Nepali context. Optimizing PostgreSQL queries for geographic filtering was also a challenge.",
+      "results": "Successfully launched the platform with early community adoption. Received positive feedback from local businesses and residents.",
+      "liveUrl": "",
+      "githubUrl": "https://github.com/Aman-1-1",
+      "image": null,
+      "featured": true
+    },
+    {
+      "id": "project-two",
+      "title": "DevTracker",
+      "type": "Productivity Tool",
+      "stack": ["React", "Spring Boot", "PostgreSQL"],
+      "shortDescription": "A personal project & task tracking dashboard for developers.",
+      "description": "DevTracker is a developer-focused project management tool that helps track tasks, deadlines, and coding sessions with a clean minimalist interface.",
+      "problem": "Generic project management tools like Jira feel overkill for solo developers who just need a simple way to track what they're building.",
+      "solution": "Built a lightweight, developer-centric tracker with GitHub integration for automatic task creation from issues.",
+      "features": [
+        "Project & task management",
+        "Time tracking per task",
+        "GitHub issue sync",
+        "Progress analytics dashboard",
+        "Dark mode"
+      ],
+      "contribution": "Full-stack development including Spring Boot REST API, React frontend, and PostgreSQL database design.",
+      "challenges": "Implementing reliable GitHub webhook integration and keeping the UI fast with real-time updates.",
+      "results": "Used daily for personal project management. Reduced context-switching between tools significantly.",
+      "liveUrl": "",
+      "githubUrl": "https://github.com/Aman-1-1",
+      "image": null,
+      "featured": false
+    },
+    {
+      "id": "project-three",
+      "title": "NepalWeather",
+      "type": "Web App / API Integration",
+      "stack": ["Next.js", "OpenWeatherMap API", "Tailwind CSS"],
+      "shortDescription": "Localized weather app for cities across Nepal.",
+      "description": "A clean weather application showing real-time weather data for major cities and regions across Nepal, with a focus on local context and Nepali language support.",
+      "problem": "Most weather apps don't provide granular coverage for smaller cities in Nepal, and none present data in a locally relevant format.",
+      "solution": "Built a weather dashboard integrating OpenWeatherMap API with a curated list of Nepali locations and bilingual UI.",
+      "features": [
+        "Real-time weather for 50+ Nepali cities",
+        "7-day forecast",
+        "Nepali & English language toggle",
+        "Air quality index",
+        "Responsive mobile design"
+      ],
+      "contribution": "Full frontend development with API integration and UI/UX design.",
+      "challenges": "Finding reliable weather data for smaller Nepali towns and handling API rate limits efficiently.",
+      "results": "Growing user base of Nepali users, particularly during monsoon season.",
+      "liveUrl": "",
+      "githubUrl": "https://github.com/Aman-1-1",
+      "image": null,
+      "featured": false
+    },
+    {
+      "id": "project-four",
+      "title": "PortfolioOS",
+      "type": "Creative Portfolio",
+      "stack": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+      "shortDescription": "This very portfolio — a GBA-style interactive experience.",
+      "description": "The portfolio you're currently navigating. Built as an original fictional retro handheld console OS to present my digital identity in a memorable and interactive way.",
+      "problem": "Generic portfolio websites fail to stand out or communicate personality.",
+      "solution": "Designed and built an entirely original GBA-inspired interface (ByteBound OS) using pure React/CSS with no game engine.",
+      "features": [
+        "Original GBA-style device frame in CSS",
+        "Full keyboard + mouse + touch controls",
+        "Web Audio API synth sound effects",
+        "Pixel-art character and UI",
+        "Professional mode toggle",
+        "Admin panel for content management"
+      ],
+      "contribution": "Concept, design, and full-stack development of the entire portfolio system.",
+      "challenges": "Achieving a convincing retro hardware aesthetic using only CSS. Designing a navigation system that feels intuitive across keyboard, mouse, and touch.",
+      "results": "A highly distinctive portfolio that communicates both technical skill and creative thinking.",
+      "liveUrl": "",
+      "githubUrl": "https://github.com/Aman-1-1",
+      "image": null,
+      "featured": false
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-1",
+      "role": "Freelance Full Stack Developer",
+      "company": "Self-Employed",
+      "period": "2023 – Present",
+      "year": "2023",
+      "type": "freelance",
+      "description": "Building web applications for local businesses and startups in Nepal. Focus on Next.js, Node.js, and PostgreSQL stack.",
+      "highlights": [
+        "Delivered 5+ client projects end-to-end",
+        "Maintained long-term client relationships",
+        "Handled full project lifecycle from requirements to deployment"
+      ]
+    },
+    {
+      "id": "exp-2",
+      "role": "Open Source Contributor",
+      "company": "Various Projects",
+      "period": "2022 – Present",
+      "year": "2022",
+      "type": "open-source",
+      "description": "Contributing to open source projects, primarily focused on developer tooling and JavaScript ecosystem.",
+      "highlights": [
+        "Submitted bug fixes and feature PRs",
+        "Participated in issue triage",
+        "Wrote documentation improvements"
+      ]
+    },
+    {
+      "id": "exp-3",
+      "role": "Student Developer",
+      "company": "University Projects",
+      "period": "2022 – 2024",
+      "year": "2022",
+      "type": "academic",
+      "description": "Developed multiple projects as part of university curriculum, including a full-stack library management system and a Java desktop application.",
+      "highlights": [
+        "Built library management system in Spring Boot + React",
+        "Created Java Swing desktop app for inventory tracking",
+        "Led 4-person development team for final year project"
+      ]
+    }
+  ],
+  "education": {
+    "degree": "Bachelor of Science in Computer Science",
+    "university": "Placeholder University, Nepal",
+    "period": "2022 – Present",
+    "expectedGraduation": "2026",
+    "areas": [
+      "Programming & Algorithms",
+      "Database Systems",
+      "Web Development",
+      "Software Engineering",
+      "Operating Systems",
+      "Computer Networks"
+    ],
+    "gpa": "3.6 / 4.0"
+  },
+  "achievements": [
+    {
+      "id": "ach-1",
+      "title": "FIRST PROJECT",
+      "icon": "★",
+      "date": "2022",
+      "shortDescription": "Shipped first real web application.",
+      "description": "Completed and deployed my first full-stack web application — a simple student grade tracker built with PHP and MySQL. Marked the beginning of the development journey.",
+      "unlocked": true
+    },
+    {
+      "id": "ach-2",
+      "title": "OPEN SOURCE",
+      "icon": "◆",
+      "date": "2022",
+      "shortDescription": "First open source contribution merged.",
+      "description": "First pull request accepted into an open source repository. Contributed a bug fix to a JavaScript utility library used by thousands of developers.",
+      "unlocked": true
+    },
+    {
+      "id": "ach-3",
+      "title": "FULL STACK",
+      "icon": "▲",
+      "date": "2023",
+      "shortDescription": "Mastered the full web stack.",
+      "description": "Completed and delivered the first full-stack project using React, Node.js, and PostgreSQL for a real client — demonstrating end-to-end development capability.",
+      "unlocked": true
+    },
+    {
+      "id": "ach-4",
+      "title": "LOCAL HERO",
+      "icon": "♦",
+      "date": "2023",
+      "shortDescription": "Built BharatpurWithMe — my city, my project.",
+      "description": "Conceptualized and built BharatpurWithMe, a community platform for Bharatpur city, Nepal. A passion project addressing a real local need.",
+      "unlocked": true
+    },
+    {
+      "id": "ach-5",
+      "title": "PORTFOLIO OS",
+      "icon": "●",
+      "date": "2024",
+      "shortDescription": "Built an entire portfolio as a GBA OS.",
+      "description": "Designed and built PortfolioOS — a unique interactive portfolio presented as a fictional retro handheld console. Proves that creative thinking is as important as technical skill.",
+      "unlocked": true
+    }
+  ],
+  "resume": {
+    "viewUrl": "/resume.pdf",
+    "downloadUrl": "/resume.pdf",
+    "lastUpdated": "2024"
+  },
+  "contact": {
+    "email": "amanregmi10@gmail.com",
+    "github": "https://github.com/Aman-1-1",
+    "linkedin": null,
+    "other": []
+  },
+  "seo": {
+    "title": "Aman Regmi — Digital Adventure | Portfolio",
+    "description": "Full Stack Developer from Chitwan, Bharatpur Nepal. Building web applications with Next.js, React, Node.js, and PostgreSQL.",
+    "keywords": ["Aman Regmi", "Full Stack Developer", "Nepal", "React", "Next.js", "Portfolio"],
+    "ogImage": "/og-image.png"
+  }
+}
