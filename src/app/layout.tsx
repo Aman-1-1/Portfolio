@@ -1,6 +1,14 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import portfolioData from '../../data/portfolio-data.json';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  // Prevents double-tap zoom on mobile so the GBA buttons feel instant
+  userScalable: false,
+  themeColor: '#0a0c10',
+};
 
 export const metadata: Metadata = {
   title: portfolioData.seo.title,

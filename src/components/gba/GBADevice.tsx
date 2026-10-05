@@ -34,6 +34,7 @@ export default function GBADevice() {
         className="gba-device-desktop"
         role="main"
         aria-label="Aman Regmi Portfolio Console"
+        style={{ touchAction: 'none' }}
       >
         {/* SCREEN SECTION */}
         <div className="gba-screen-housing">
@@ -62,7 +63,7 @@ export default function GBADevice() {
             </div>
 
             {/* Inner Screen Viewport */}
-            <div className="gba-screen-viewport">
+            <div className="gba-screen-viewport" style={{ touchAction: 'pan-y' }}>
               <GBAScreen />
             </div>
           </div>
@@ -88,10 +89,17 @@ export default function GBADevice() {
         </div>
       </div>
 
-      {/* Bottom Controls Reference */}
-      <div className="mt-4 text-center">
-        <p className="font-mono text-xs text-[#527A8A] tracking-wider">
-          [ARROWS] Navigate • [ENTER] A • [ESC] B • [SPACE] Start
+      {/* Bottom Controls Reference — simple, mobile-friendly */}
+      <div className="mt-4 text-center select-none" aria-label="Control guide">
+        <p className="font-mono text-[11px] text-[#527A8A] tracking-widest uppercase">
+          <span className="text-[#8FA878]">ARROWS</span>
+          {' '}MOVE
+          {'  '}
+          <span className="text-[#C96B3B]">A</span>
+          {' '}OK
+          {'  '}
+          <span className="text-[#8FA878]">B</span>
+          {' '}BACK
         </p>
       </div>
     </div>
