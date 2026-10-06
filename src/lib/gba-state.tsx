@@ -19,6 +19,7 @@ const initialState: GBAState = {
   musicEnabled: false,
   transitioning: false,
   mode: 'gba',
+  actionTrigger: 0,
 };
 
 // ─── Menu Items ───────────────────────────────────────────────────────────────
@@ -154,6 +155,10 @@ function handleButtonPress(state: GBAState, button: GBAButton): GBAState {
       }
       if (screen === 'achievements') {
         return { ...state, prevScreen: screen, screen: 'achievement-detail' };
+      }
+      // For contact and resume: don't navigate — just signal the screen to fire its action
+      if (screen === 'contact' || screen === 'resume') {
+        return { ...state, actionTrigger: state.actionTrigger + 1 };
       }
       return state;
 

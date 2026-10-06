@@ -139,4 +139,6 @@ export interface GBAState {
   musicEnabled: boolean;
   transitioning: boolean;
   mode: 'gba' | 'portfolio';
+  /** Increments each time A is pressed on contact or resume screen so those screens can fire their action */
+  actionTrigger: number;
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useGBA } from '@/lib/gba-state';
 import ScreenContainer from './ScreenContainer';
 import { usePortfolioData } from '@/lib/portfolio-context';
@@ -17,17 +17,30 @@ export default function ResumeScreen() {
   const handleAction = (idx?: number) => {
     const targetIdx = typeof idx === 'number' ? idx : state.resumeIndex;
     const selected = options[targetIdx];
+    if (!selected) return;
+
     if (selected.action === 'view') {
       window.open(resume.viewUrl, '_blank', 'noopener,noreferrer');
     } else {
       const a = document.createElement('a');
       a.href = resume.downloadUrl;
       a.download = 'Aman_Regmi_Resume.pdf';
+      a.target = '_blank';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
     }
   };
+
+  // React to A button press via actionTrigger
+  const prevTrigger = useRef(state.actionTrigger);
+  useEffect(() => {
+    if (state.screen === 'resume' && state.actionTrigger !== prevTrigger.current) {
+      prevTrigger.current = state.actionTrigger;
+      handleAction();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.actionTrigger, state.screen]);
 
   return (
     <ScreenContainer
@@ -53,14 +66,20 @@ export default function ResumeScreen() {
           {options.map((opt, idx) => {
             const isSelected = state.resumeIndex === idx;
             return (
-              <div
+              <button
                 key={opt.action}
-                onClick={() => handleAction(idx)}
-                className={`flex items-center gap-2 p-3 rounded-md cursor-pointer border-2 transition-all ${
+                type="button"
+                aria-label={opt.label}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  handleAction(idx);
+                }}
+                className={`flex items-center gap-2 p-3 rounded-md cursor-pointer border-2 transition-all w-full text-left ${
                   isSelected
                     ? 'bg-[#252A38] border-[#C96B3B] text-[#F1E7C8] shadow-md'
                     : 'bg-[#171A24]/60 border-[#252A38]/50 text-[#8FA878] hover:bg-[#1f2430]'
                 }`}
+                style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
               >
                 <span
                   className={`pixel-text text-sm ${
@@ -72,7 +91,7 @@ export default function ResumeScreen() {
                 <span className="pixel-text text-xs sm:text-sm font-bold tracking-wide">
                   {opt.label}
                 </span>
-              </div>
+              </button>
             );
           })}
         </div>
