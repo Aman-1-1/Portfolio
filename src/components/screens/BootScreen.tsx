@@ -5,9 +5,9 @@ import { useGBA } from '@/lib/gba-state';
 import { soundManager, playBoot } from '@/lib/sound-engine';
 
 const BOOT_STEPS = [
-  { text: 'STARTING...', delay: 350 },
-  { text: 'LOADING PORTFOLIO...', delay: 450 },
-  { text: 'READY', delay: 400 },
+  { text: 'STARTING', dots: '...', delay: 350 },
+  { text: 'LOADING PORTFOLIO', dots: '...', delay: 450 },
+  { text: 'READY', dots: '', delay: 400 },
 ];
 
 export default function BootScreen() {
@@ -52,19 +52,33 @@ export default function BootScreen() {
       onClick={() => navigateTo('title')}
       className="absolute inset-0 w-full h-full flex flex-col items-center justify-center cursor-pointer select-none bg-[#171A24] p-6"
     >
-      {/* Middle-aligned (center-aligned) text container with stable vertical height */}
-      <div className="w-full max-w-xs flex flex-col items-center justify-center space-y-2 text-center">
+      {/* Centered text container where words are centered in the middle and trailing dots don't skew the center */}
+      <div className="w-full max-w-xs flex flex-col items-center justify-center space-y-2.5">
         {BOOT_STEPS.map((s, i) => {
           const isVisible = i <= step;
           return (
-            <p
+            <div
               key={i}
-              className={`pixel-text text-sm font-mono tracking-wider text-center transition-opacity duration-150 ${
+              className={`relative inline-flex items-center justify-center transition-opacity duration-150 ${
                 isVisible ? 'opacity-100' : 'opacity-0'
-              } ${s.text === 'READY' ? 'text-[#F1E7C8] font-bold' : 'text-[#C7D49A]'}`}
+              }`}
             >
-              {s.text}
-            </p>
+              {/* Word strictly centered on the screen */}
+              <span
+                className={`pixel-text text-sm font-mono tracking-wider ${
+                  s.text === 'READY' ? 'text-[#F1E7C8] font-bold' : 'text-[#C7D49A]'
+                }`}
+              >
+                {s.text}
+              </span>
+
+              {/* Trailing dots positioned right after the word without pulling the word off-center */}
+              {s.dots && (
+                <span className="absolute left-full ml-1 pixel-text text-sm font-mono tracking-wider text-[#8FA878]">
+                  {s.dots}
+                </span>
+              )}
+            </div>
           );
         })}
       </div>
