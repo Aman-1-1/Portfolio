@@ -5,8 +5,8 @@ import { useGBA } from '@/lib/gba-state';
 import { soundManager, playBoot } from '@/lib/sound-engine';
 
 const BOOT_STEPS = [
-  { text: 'STARTING...', delay: 300 },
-  { text: 'LOADING PORTFOLIO...', delay: 400 },
+  { text: 'STARTING...', delay: 350 },
+  { text: 'LOADING PORTFOLIO...', delay: 450 },
   { text: 'READY', delay: 400 },
 ];
 
@@ -14,7 +14,6 @@ export default function BootScreen() {
   const { navigateTo } = useGBA();
   const [step, setStep] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [done, setDone] = useState(false);
 
   useEffect(() => {
     soundManager.play(playBoot);
@@ -23,7 +22,6 @@ export default function BootScreen() {
 
     const runStep = (idx: number) => {
       if (idx >= BOOT_STEPS.length) {
-        setDone(true);
         timeout = setTimeout(() => navigateTo('title'), 400);
         return;
       }
@@ -38,9 +36,9 @@ export default function BootScreen() {
           clearInterval(pInterval);
           return 100;
         }
-        return p + 10;
+        return p + 5;
       });
-    }, 50);
+    }, 45);
 
     runStep(0);
     return () => {
@@ -49,25 +47,30 @@ export default function BootScreen() {
     };
   }, [navigateTo]);
 
-  const visibleLines = BOOT_STEPS.slice(0, step + 1);
-
   return (
     <div
       onClick={() => navigateTo('title')}
-      className="screen-base flex flex-col justify-center items-center gap-4 p-6 cursor-pointer"
+      className="screen-base w-full h-full flex flex-col justify-center items-center gap-4 p-6 cursor-pointer select-none"
     >
-      <div className="w-full max-w-xs space-y-2 text-center">
-        {visibleLines.map((s, i) => (
-          <p
-            key={i}
-            className="pixel-text text-sm font-mono tracking-wider text-[#C7D49A]"
-          >
-            {s.text}
-          </p>
-        ))}
+      {/* Aligned text container with fixed height so layout never jumps */}
+      <div className="w-[200px] sm:w-[220px] flex flex-col gap-2 text-left">
+        {BOOT_STEPS.map((s, i) => {
+          const isVisible = i <= step;
+          return (
+            <p
+              key={i}
+              className={`pixel-text text-xs sm:text-sm font-mono tracking-wider transition-opacity duration-150 ${
+                isVisible ? 'opacity-100' : 'opacity-0'
+              } ${s.text === 'READY' ? 'text-[#F1E7C8] font-bold' : 'text-[#C7D49A]'}`}
+            >
+              {s.text}
+            </p>
+          );
+        })}
       </div>
 
-      <div className="w-full max-w-xs mt-2">
+      {/* Progress bar matching the exact width of the text block */}
+      <div className="w-[200px] sm:w-[220px] mt-1">
         <div className="w-full h-2.5 bg-[#11141c] border border-[#252A38] rounded-sm p-0.5">
           <div
             className="h-full bg-[#C96B3B] transition-all duration-75"
