@@ -50,16 +50,16 @@ export default function BootScreen() {
   return (
     <div
       onClick={() => navigateTo('title')}
-      className="screen-base w-full h-full flex flex-col justify-center items-center gap-4 p-6 cursor-pointer select-none"
+      className="absolute inset-0 w-full h-full flex flex-col items-center justify-center cursor-pointer select-none bg-[#171A24] p-6"
     >
-      {/* Aligned text container with fixed height so layout never jumps */}
-      <div className="w-[200px] sm:w-[220px] flex flex-col gap-2 text-left">
+      {/* Middle-aligned (center-aligned) text container with stable vertical height */}
+      <div className="w-full max-w-xs flex flex-col items-center justify-center space-y-2 text-center">
         {BOOT_STEPS.map((s, i) => {
           const isVisible = i <= step;
           return (
             <p
               key={i}
-              className={`pixel-text text-xs sm:text-sm font-mono tracking-wider transition-opacity duration-150 ${
+              className={`pixel-text text-sm font-mono tracking-wider text-center transition-opacity duration-150 ${
                 isVisible ? 'opacity-100' : 'opacity-0'
               } ${s.text === 'READY' ? 'text-[#F1E7C8] font-bold' : 'text-[#C7D49A]'}`}
             >
@@ -69,8 +69,8 @@ export default function BootScreen() {
         })}
       </div>
 
-      {/* Progress bar matching the exact width of the text block */}
-      <div className="w-[200px] sm:w-[220px] mt-1">
+      {/* Progress bar centered right below the text */}
+      <div className="w-full max-w-[240px] mt-4">
         <div className="w-full h-2.5 bg-[#11141c] border border-[#252A38] rounded-sm p-0.5">
           <div
             className="h-full bg-[#C96B3B] transition-all duration-75"
