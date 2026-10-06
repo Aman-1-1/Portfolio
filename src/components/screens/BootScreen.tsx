@@ -53,7 +53,7 @@ export default function BootScreen() {
       className="absolute inset-0 w-full h-full flex flex-col items-center justify-center cursor-pointer select-none bg-[#171A24] p-6"
     >
       {/* Centered text container where words are centered in the middle and trailing dots don't skew the center */}
-      <div className="w-full max-w-xs flex flex-col items-center justify-center space-y-2.5">
+      <div className="w-full max-w-xs flex flex-col items-center justify-center space-y-3.5">
         {BOOT_STEPS.map((s, i) => {
           const isVisible = i <= step;
           return (
@@ -65,16 +65,16 @@ export default function BootScreen() {
             >
               {/* Word strictly centered on the screen */}
               <span
-                className={`pixel-text text-sm font-mono tracking-wider ${
+                className={`pixel-text text-sm font-mono tracking-widest ${
                   s.text === 'READY' ? 'text-[#F1E7C8] font-bold' : 'text-[#C7D49A]'
                 }`}
               >
                 {s.text}
               </span>
 
-              {/* Trailing dots positioned right after the word without pulling the word off-center */}
+              {/* Trailing dots positioned with clear horizontal spacing after the word */}
               {s.dots && (
-                <span className="absolute left-full ml-1 pixel-text text-sm font-mono tracking-wider text-[#8FA878]">
+                <span className="absolute left-full ml-3 pixel-text text-sm font-mono tracking-widest text-[#8FA878]">
                   {s.dots}
                 </span>
               )}
