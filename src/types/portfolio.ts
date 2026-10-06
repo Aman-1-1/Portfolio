@@ -56,6 +56,7 @@ export interface Experience {
 }
 
 export interface Education {
+  id: string;
   degree: string;
   university: string;
   period: string;
@@ -99,7 +100,7 @@ export interface PortfolioData {
   skills: Skill[];
   projects: Project[];
   experience: Experience[];
-  education: Education;
+  education: Education[];
   achievements: Achievement[];
   resume: Resume;
   contact: Contact;

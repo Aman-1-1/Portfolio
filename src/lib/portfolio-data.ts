@@ -36,7 +36,7 @@ const FALLBACK: PortfolioData = (initialPortfolioData as unknown as PortfolioDat
   skills: [],
   projects: [],
   experience: [],
-  education: { degree: '', university: '', period: '', expectedGraduation: '', areas: [], gpa: '' },
+  education: [{ id: '1', degree: '', university: '', period: '', expectedGraduation: '', areas: [], gpa: '' }],
   achievements: [],
   resume: { viewUrl: '/resume.pdf', downloadUrl: '/resume.pdf', lastUpdated: '2024' },
   contact: { email: '', github: '', linkedin: null, other: [] },
@@ -107,12 +107,13 @@ function mapExperience(e: any): Experience {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapEducation(row: any): Education {
   return {
-    degree: row?.degree ?? FALLBACK.education.degree,
-    university: row?.university ?? FALLBACK.education.university,
-    period: row?.period ?? FALLBACK.education.period,
-    expectedGraduation: row?.expected_graduation ?? FALLBACK.education.expectedGraduation,
-    areas: row?.areas ?? FALLBACK.education.areas,
-    gpa: row?.gpa ?? FALLBACK.education.gpa,
+    id: String(row?.id ?? ''),
+    degree: row?.degree ?? '',
+    university: row?.university ?? '',
+    period: row?.period ?? '',
+    expectedGraduation: row?.expected_graduation ?? '',
+    areas: row?.areas ?? [],
+    gpa: row?.gpa ?? '',
   };
 }
 
@@ -162,7 +163,7 @@ export async function getPortfolioData(): Promise<PortfolioData> {
       supabase.from('skills').select('*').order('sort_order'),
       supabase.from('projects').select('*').order('sort_order'),
       supabase.from('experience').select('*').order('sort_order'),
-      supabase.from('education').select('*').eq('id', 1).maybeSingle(),
+      supabase.from('education').select('*').order('sort_order'),
       supabase.from('achievements').select('*').order('sort_order'),
       supabase.from('contact').select('*').eq('id', 1).maybeSingle(),
       supabase.from('site_settings').select('*').eq('id', 1).maybeSingle(),
@@ -180,7 +181,7 @@ export async function getPortfolioData(): Promise<PortfolioData> {
       skills: (skillsRes.data && skillsRes.data.length > 0) ? skillsRes.data.map(mapSkill) : FALLBACK.skills,
       projects: (projectsRes.data && projectsRes.data.length > 0) ? projectsRes.data.map(mapProject) : FALLBACK.projects,
       experience: (expRes.data && expRes.data.length > 0) ? expRes.data.map(mapExperience) : FALLBACK.experience,
-      education: eduRes.data ? mapEducation(eduRes.data) : FALLBACK.education,
+      education: (eduRes.data && eduRes.data.length > 0) ? eduRes.data.map(mapEducation) : FALLBACK.education,
       achievements: (achieveRes.data && achieveRes.data.length > 0) ? achieveRes.data.map(mapAchievement) : FALLBACK.achievements,
       resume: {
         viewUrl: s?.resume_view_url ?? FALLBACK.resume.viewUrl,

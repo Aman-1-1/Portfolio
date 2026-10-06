@@ -137,21 +137,25 @@ export default function ProfessionalMode({ data }: { data: PortfolioData }) {
             <h2 className="text-lg font-semibold text-white tracking-wide uppercase font-mono text-[#C96B3B]">
               Education
             </h2>
-            <div className="bg-[#171A24] p-4 rounded border border-gray-800 space-y-2">
-              <h3 className="text-sm font-bold text-white">{education.degree}</h3>
-              <p className="text-xs text-[#C96B3B]">{education.university}</p>
-              <p className="text-xs text-gray-400 font-mono">{education.period}</p>
-              <div className="pt-2 border-t border-gray-800">
-                <span className="text-xs font-mono text-gray-400 block mb-1">Key Disciplines:</span>
-                <div className="flex flex-wrap gap-1">
-                  {education.areas.map((a, i) => (
-                    <span key={i} className="text-[10px] bg-[#252A38] text-gray-300 px-2 py-0.5 rounded font-mono">
-                      {a}
-                    </span>
-                  ))}
-                </div>
+            {education.map((edu, idx) => (
+              <div key={edu.id ?? idx} className="bg-[#171A24] p-4 rounded border border-gray-800 space-y-2">
+                <h3 className="text-sm font-bold text-white">{edu.degree}</h3>
+                <p className="text-xs text-[#C96B3B]">{edu.university}</p>
+                <p className="text-xs text-gray-400 font-mono">{edu.period}{edu.expectedGraduation && ` · Expected ${edu.expectedGraduation}`}{edu.gpa && ` · GPA: ${edu.gpa}`}</p>
+                {edu.areas && edu.areas.length > 0 && (
+                  <div className="pt-2 border-t border-gray-800">
+                    <span className="text-xs font-mono text-gray-400 block mb-1">Key Disciplines:</span>
+                    <div className="flex flex-wrap gap-1">
+                      {edu.areas.map((a: string, i: number) => (
+                        <span key={i} className="text-[10px] bg-[#252A38] text-gray-300 px-2 py-0.5 rounded font-mono">
+                          {a}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
+            ))}
           </div>
         </section>
 

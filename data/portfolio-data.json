@@ -178,21 +178,24 @@
       ]
     }
   ],
-  "education": {
-    "degree": "Bachelor of Science in Computer Science",
-    "university": "Placeholder University, Nepal",
-    "period": "2022 – Present",
-    "expectedGraduation": "2026",
-    "areas": [
-      "Programming & Algorithms",
-      "Database Systems",
-      "Web Development",
-      "Software Engineering",
-      "Operating Systems",
-      "Computer Networks"
-    ],
-    "gpa": "3.6 / 4.0"
-  },
+  "education": [
+    {
+      "id": "edu-1",
+      "degree": "Bachelor of Science in Computer Science",
+      "university": "Placeholder University, Nepal",
+      "period": "2022 – Present",
+      "expectedGraduation": "2026",
+      "areas": [
+        "Programming & Algorithms",
+        "Database Systems",
+        "Web Development",
+        "Software Engineering",
+        "Operating Systems",
+        "Computer Networks"
+      ],
+      "gpa": "3.6 / 4.0"
+    }
+  ],
   "achievements": [
     {
       "id": "ach-1",
